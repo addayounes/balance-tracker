@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Asus/Desktop/Android-Mini-Project/BalanceTracker/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1905" />
-        <entry key="..\:/Users/Asus/Desktop/Android-Mini-Project/BalanceTracker/app/src/main/res/layout/activity_add_record2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Asus/Desktop/Android-Mini-Project/BalanceTracker/app/src/main/res/layout/activity_add_record2.xml" value="0.264" />
         <entry key="..\:/Users/Asus/Desktop/Android-Mini-Project/BalanceTracker/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Asus/Desktop/Android-Mini-Project/BalanceTracker/app/src/main/res/layout/my_row.xml" value="0.6" />
       </map>
     </option>
   </component>
