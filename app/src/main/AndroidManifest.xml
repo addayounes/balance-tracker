@@ -10,8 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BalanceTracker">
         <activity
+            android:name=".AddRecordActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Add a record"
+            ></activity>
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="Balance Tracker"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
