@@ -54,9 +54,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         content.put(COLUMN_AMOUNT, amount);
         content.put(COLUMN_DATE, date);
 
-        long result = db.insert(TABLE_NAME, null, content);
+        long res = db.insert(TABLE_NAME, null, content);
 
-        if(result==-1) {
+        if(res == -1) {
             Toast.makeText(context, "Une erreur s'est produite lors de l'ajout de l'enregistrement", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "L'enregistrement a été ajouté avec succcés", Toast.LENGTH_SHORT).show();
@@ -74,5 +74,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
 
         return cursor;
+    }
+
+    void updateRecord(String id, double amount, String description, String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+
+        content.put(COLUMN_AMOUNT, amount);
+        content.put(COLUMN_DESCRIPTION, description);
+        content.put(COLUMN_DATE, date);
+
+        long res = db.update(TABLE_NAME, content, "_id=?", new String[]{id});
+
+        if(res == -1) {
+            Toast.makeText(context, "Une erreur s'est produite lors de la modificationb de l'enregistrement", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "L'enregistrement a été modifiér avec succcés", Toast.LENGTH_SHORT).show();
+        }
     }
 }

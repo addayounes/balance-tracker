@@ -1,9 +1,13 @@
 package com.example.balancetracker;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,10 +19,12 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     Context context;
+    Activity activity;
     ArrayList<String> id, amount, type, description, date;
 
-    public CustomAdapter(Context context, ArrayList<String> id, ArrayList<String> amount, ArrayList<String> type,
+    public CustomAdapter(Activity activity, Context context, ArrayList<String> id, ArrayList<String> amount, ArrayList<String> type,
                          ArrayList<String> description, ArrayList<String> date) {
+        this.activity = activity;
         this.context = context;
         this.id = id;
         this.amount = amount;
@@ -36,13 +42,26 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.id_txt.setText(String.valueOf(id.get(position)));
         holder.amount_txt.setText(String.valueOf(amount.get(position)));
         holder.type_txt.setText(String.valueOf(type.get(position)));
         holder.description_txt.setText(String.valueOf(description.get(position)));
         holder.date_txt.setText(String.valueOf(date.get(position)));
 
+        holder.myRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpdateActivity.class);
+
+                intent.putExtra("id", String.valueOf(id.get(position)));
+                intent.putExtra("amount", String.valueOf(amount.get(position)));
+                intent.putExtra("description", String.valueOf(description.get(position)));
+                intent.putExtra("date", String.valueOf(date.get(position)));
+
+                activity.startActivityForResult(intent, 1);
+            }
+        });
     }
 
     @Override
@@ -52,6 +71,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView id_txt, amount_txt, type_txt, description_txt, date_txt;
+        LinearLayout myRow;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +81,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             type_txt = itemView.findViewById(R.id.type_txt);
             description_txt = itemView.findViewById(R.id.description_txt);
             date_txt = itemView.findViewById(R.id.date_txt);
+            myRow = itemView.findViewById(R.id.my_row);
         }
     }
 }
