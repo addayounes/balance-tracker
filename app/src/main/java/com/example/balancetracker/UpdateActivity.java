@@ -2,6 +2,8 @@ package com.example.balancetracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +13,7 @@ import android.widget.Toast;
 public class UpdateActivity extends AppCompatActivity {
 
     EditText amount_input_update, description_input_update, date_input_update;
-    Button update_button;
+    Button update_button, delete_button;
 
     String id, amount, description, date;
 
@@ -24,6 +26,8 @@ public class UpdateActivity extends AppCompatActivity {
         description_input_update = findViewById(R.id.description_input_update);
         date_input_update = findViewById(R.id.date_input_update);
         update_button = findViewById(R.id.update_button);
+        delete_button = findViewById(R.id.delete_button);
+
 
         getAndSetIntentData();
 
@@ -39,6 +43,21 @@ public class UpdateActivity extends AppCompatActivity {
                 myDB.updateRecord(id, Double.valueOf(amount), description, date);
 
                 Toast.makeText(UpdateActivity.this, description, Toast.LENGTH_SHORT).show();
+            }
+        });
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // here we handle the deleting process
+                confirmDialog();
             }
         });
 
@@ -61,5 +80,27 @@ public class UpdateActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "il y a pas de contenu!", Toast.LENGTH_SHORT).show();
         }
+    }
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //j'ai pas spécifier qsq on doit supprimer
+        builder.setTitle("delete ?");
+        builder.setMessage("etes vous sure que vous voulez supprimer ça?");
+        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
+                myDB.deleteOneRow(id);
+                finish();
+
+            }
+        });
+        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+                builder.create().show();
     }
 }

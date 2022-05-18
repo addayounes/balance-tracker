@@ -92,4 +92,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "L'enregistrement a été modifiér avec succcés", Toast.LENGTH_SHORT).show();
         }
     }
-}
+    void deleteOneRow(String row_id ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME,"_id=?",new String[]{row_id});
+                if(result==-1){
+                    Toast.makeText(context,"echec de suppression",Toast.LENGTH_SHORT).show();
+                }
+              else {
+                    Toast.makeText(context,"supprimé",Toast.LENGTH_SHORT).show();
+                }
+}}
