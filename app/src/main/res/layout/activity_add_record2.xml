@@ -71,7 +71,7 @@
         android:ems="10"
         android:hint="@string/selectionner_la_date"
         android:importantForAutofill="no"
-        android:inputType="date"
+        android:inputType="text"
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

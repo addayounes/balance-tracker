@@ -41,7 +41,7 @@ public class AddRecordActivity extends AppCompatActivity {
                                 description_input.getText().toString().trim(),
                                 Integer.valueOf(amount_input.getText().toString().trim()),
                                 date_input.getText().toString().trim());
-                finish();
+                // finish();
             }
 
         });
