@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">BalanceTracker</string>
+    <string name="_1500_da">1500 DA</string>
+    <string name="balance">Balance</string>
+    <string name="_200_da">200 DA</string>
+    <string name="achats">Achats</string>
+    <string name="revenues">Revenues</string>
+    <string name="liste_des_achats_et_revenues">Liste des achats et revenues</string>
+    <string name="add">Add</string>
 </resources>

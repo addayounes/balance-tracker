@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddRecordActivity"
-    android:background="@color/white"
     android:paddingHorizontal="16dp">
 
     <EditText
