@@ -11,7 +11,8 @@
         android:theme="@style/Theme.BalanceTracker">
         <activity
             android:name=".UpdateActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Update a record"/>
         <activity
             android:name=".AddRecordActivity"
             android:label="Add a record"

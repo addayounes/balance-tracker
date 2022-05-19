@@ -7,4 +7,12 @@
     <string name="revenues">Revenues</string>
     <string name="liste_des_achats_et_revenues">Liste des achats et revenues</string>
     <string name="add">Add</string>
+    <string name="revenue">Revenue</string>
+    <string name="achat">Achat</string>
+    <string name="entrer_une_description">Entrer une description</string>
+    <string name="selectionner_la_date">Selectionner la date</string>
+    <string name="entrer_le_montant">Entrer le montant</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="mettre_a_jour">Mettre a jour</string>
+    <string name="supprimer">Supprimer</string>
 </resources>

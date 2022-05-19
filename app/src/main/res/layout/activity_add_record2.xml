@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="16dp"
+        android:checkedButton="@id/income_radio_input"
         app:layout_constraintBottom_toTopOf="@+id/amount_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,14 +23,13 @@
             android:id="@+id/income_radio_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Revenue" />
+            android:text="@string/revenue" />
 
         <RadioButton
             android:id="@+id/expense_radio_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Achat" />
+            android:text="@string/achat" />
 
     </RadioGroup>
 
@@ -38,9 +38,11 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Entrer le montant"
+        android:hint="@string/entrer_le_montant"
         android:inputType="numberDecimal"
+        android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/description_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,12 +54,14 @@
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Entrer une description"
+        android:hint="@string/entrer_une_description"
         android:inputType="textPersonName"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount_input" />
+        app:layout_constraintTop_toBottomOf="@+id/amount_input"
+        android:autofillHints="Description" />
 
     <EditText
         android:id="@+id/date_input"
@@ -65,8 +69,10 @@
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Selectionner la date"
+        android:hint="@string/selectionner_la_date"
+        android:importantForAutofill="no"
         android:inputType="date"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_input" />
@@ -75,11 +81,15 @@
         android:id="@+id/add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Ajouter"
+        android:layout_marginTop="30dp"
+        android:text="@string/ajouter"
+        android:paddingVertical="15dp"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_input" />
+        app:layout_constraintTop_toBottomOf="@+id/date_input"
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

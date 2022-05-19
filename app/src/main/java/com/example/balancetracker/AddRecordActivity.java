@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class AddRecordActivity extends AppCompatActivity {
 
@@ -23,9 +24,6 @@ public class AddRecordActivity extends AppCompatActivity {
 
 
         radioGroup = findViewById(R.id.radioGroup);
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-
-        type_input = findViewById(selectedId);
         amount_input = findViewById(R.id.amount_input);
         date_input = findViewById(R.id.date_input);
         description_input = findViewById(R.id.description_input);
@@ -36,16 +34,14 @@ public class AddRecordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(AddRecordActivity.this);
 
-                int type = 1;
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                type_input = findViewById(selectedId);
 
-                if(type_input.getText()=="Revenue") type = 1;
-                else if(type_input.getText()=="Achat") type = 0;
-
-                myDB.addRecord( type,
+                myDB.addRecord( type_input.getText().toString().trim(),
                                 description_input.getText().toString().trim(),
                                 Integer.valueOf(amount_input.getText().toString().trim()),
                                 date_input.getText().toString().trim());
-                //finish();
+                finish();
             }
 
         });

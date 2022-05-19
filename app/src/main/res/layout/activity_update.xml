@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddRecordActivity"
-    android:paddingHorizontal="16dp">
+    android:paddingHorizontal="16dp"
+    tools:context=".AddRecordActivity">
 
     <EditText
         android:id="@+id/amount_input_update"
@@ -14,59 +14,70 @@
         android:layout_marginTop="150dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="Entrer le montant"
+        android:hint="@string/entrer_le_montant"
         android:inputType="numberDecimal"
+        android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/description_input_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/description_input_update"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Entrer une description"
+        android:hint="@string/entrer_une_description"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount_input_update" />
+        app:layout_constraintTop_toBottomOf="@+id/amount_input_update"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/date_input_update"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Selectionner la date"
+        android:hint="@string/selectionner_la_date"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_input_update" />
+        app:layout_constraintTop_toBottomOf="@+id/description_input_update"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/update_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Mettre a jour"
+        android:paddingVertical="15dp"
+        android:text="@string/mettre_a_jour"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_input_update" />
-//i changed the height
+        app:layout_constraintTop_toBottomOf="@+id/date_input_update"
+        tools:ignore="TextContrastCheck" />
+
     <Button
         android:id="@+id/delete_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Supprimer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/red"
+        android:paddingVertical="15dp"
+        android:text="@string/supprimer"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/update_button"
-        app:layout_constraintVertical_bias="0.163" />
+        tools:ignore="TextContrastCheck"
+        tools:layout_editor_absoluteX="16dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,14 +42,6 @@ public class UpdateActivity extends AppCompatActivity {
 
                 myDB.updateRecord(id, Double.valueOf(amount), description, date);
 
-                Toast.makeText(UpdateActivity.this, description, Toast.LENGTH_SHORT).show();
-            }
-        });
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
             }
         });
 
@@ -83,24 +75,25 @@ public class UpdateActivity extends AppCompatActivity {
     }
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //j'ai pas spécifier qsq on doit supprimer
-        builder.setTitle("delete ?");
-        builder.setMessage("etes vous sure que vous voulez supprimer ça?");
+
+        builder.setTitle("Supprimer l'enregistrement");
+        builder.setMessage("Êtes vous sure que vous voulez supprimer ça?");
+
         builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
                 myDB.deleteOneRow(id);
                 finish();
-
             }
         });
         builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                finish();
             }
         });
-                builder.create().show();
+
+        builder.create().show();
     }
 }

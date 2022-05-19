@@ -44,7 +44,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.id_txt.setText(String.valueOf(id.get(position)));
-        holder.amount_txt.setText(String.valueOf(amount.get(position)));
+        holder.amount_txt.setText(String.valueOf(amount.get(position)) + " DA");
         holder.type_txt.setText(String.valueOf(type.get(position)));
         holder.description_txt.setText(String.valueOf(description.get(position)));
         holder.date_txt.setText(String.valueOf(date.get(position)));
@@ -62,6 +62,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 activity.startActivityForResult(intent, 1);
             }
         });
+
+
+        /*
+        not working for the moment
+
+        if(String.valueOf(type.get(position)) == "Achat") {
+            holder.myRow.setBackgroundColor(Color.parseColor("#EEDFE2"));
+        } else if(String.valueOf(type.get(position)) == "Revenue") {
+            holder.myRow.setBackgroundColor(Color.parseColor("#567845"));
+        }
+        */
+
     }
 
     @Override
@@ -77,10 +89,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             super(itemView);
 
             id_txt = itemView.findViewById(R.id.id_txt);
-            amount_txt = itemView.findViewById(R.id.amount_txt);
+            amount_txt = itemView.findViewById(R.id.date_txt);
             type_txt = itemView.findViewById(R.id.type_txt);
             description_txt = itemView.findViewById(R.id.description_txt);
-            date_txt = itemView.findViewById(R.id.date_txt);
+            date_txt = itemView.findViewById(R.id.amount_txt);
             myRow = itemView.findViewById(R.id.my_row);
         }
     }

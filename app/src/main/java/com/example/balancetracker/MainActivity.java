@@ -77,21 +77,14 @@ public class MainActivity extends AppCompatActivity {
     void getAndStoreData() {
         Cursor cursor = myDB.getAllData();
 
-        if(cursor.getCount() == 0) {
-            Toast.makeText(this, "Cliquer sur le plus pour ajouter des enregistrement", Toast.LENGTH_SHORT).show();
-        } else {
-
+        if(cursor.getCount() == 0) Toast.makeText(this, "Cliquer sur le plus pour ajouter des enregistrement", Toast.LENGTH_SHORT).show();
+        else {
             while(cursor.moveToNext()) {
-                String typeLabel = "";
-                int typeVal = cursor.getInt(3);
-
-                if(typeVal==0) typeLabel = "Achat";
-                else if(typeVal==1) typeLabel = "Revenue";
 
                 id.add(cursor.getString(0));
                 description.add(cursor.getString(1));
                 amount.add(cursor.getString(2));
-                type.add(typeLabel);
+                type.add(cursor.getString(3));
                 date.add(cursor.getString(4));
             }
 

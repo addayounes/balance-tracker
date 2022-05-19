@@ -32,7 +32,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String createTableQuery = "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COLUMN_DESCRIPTION + " TEXT," +
                 COLUMN_AMOUNT + " REAL," +
-                COLUMN_TYPE + " INTEGER," +
+                COLUMN_TYPE + " TEXT," +
                 COLUMN_DATE + " TEXT);";
 
         db.execSQL(createTableQuery);
@@ -45,7 +45,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addRecord(int type, String description, double amount, String date) {
+    void addRecord(String type, String description, double amount, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues content = new ContentValues();
 
@@ -56,11 +56,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long res = db.insert(TABLE_NAME, null, content);
 
-        if(res == -1) {
-            Toast.makeText(context, "Une erreur s'est produite lors de l'ajout de l'enregistrement", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "L'enregistrement a été ajouté avec succcés", Toast.LENGTH_SHORT).show();
-        }
+        if(res == -1) Toast.makeText(context, "Une erreur s'est produite lors de l'ajout de l'enregistrement", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "L'enregistrement a été ajouté avec succcés", Toast.LENGTH_SHORT).show();
+
     }
 
     Cursor getAllData() {
@@ -69,9 +67,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = null;
 
-        if(db != null) {
-            cursor = db.rawQuery(query, null);
-        }
+        if(db != null) cursor = db.rawQuery(query, null);
 
         return cursor;
     }
@@ -86,19 +82,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long res = db.update(TABLE_NAME, content, "_id=?", new String[]{id});
 
-        if(res == -1) {
-            Toast.makeText(context, "Une erreur s'est produite lors de la modificationb de l'enregistrement", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "L'enregistrement a été modifiér avec succcés", Toast.LENGTH_SHORT).show();
-        }
+        if(res == -1)  Toast.makeText(context, "Une erreur s'est produite lors de la modificationb de l'enregistrement", Toast.LENGTH_SHORT).show();
+        else  Toast.makeText(context, "L'enregistrement a été modifiér avec succcés", Toast.LENGTH_SHORT).show();
+
     }
     void deleteOneRow(String row_id ){
         SQLiteDatabase db = this.getWritableDatabase();
+
         long result = db.delete(TABLE_NAME,"_id=?",new String[]{row_id});
-                if(result==-1){
-                    Toast.makeText(context,"echec de suppression",Toast.LENGTH_SHORT).show();
-                }
-              else {
-                    Toast.makeText(context,"supprimé",Toast.LENGTH_SHORT).show();
-                }
+
+        if(result==-1) Toast.makeText(context,"echec de suppression",Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context,"supprimé",Toast.LENGTH_SHORT).show();
+
 }}
