@@ -4,13 +4,16 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -64,15 +67,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         });
 
 
-        /*
-        not working for the moment
+        if(type.get(position).equals("Achat"))
+            holder.rowLayout.setBackgroundColor(Color.parseColor("#F4F0F2"));
+        else if(type.get(position).equals("Revenue"))
+            holder.rowLayout.setBackgroundColor(Color.parseColor("#E2F7F4"));
 
-        if(String.valueOf(type.get(position)) == "Achat") {
-            holder.myRow.setBackgroundColor(Color.parseColor("#EEDFE2"));
-        } else if(String.valueOf(type.get(position)) == "Revenue") {
-            holder.myRow.setBackgroundColor(Color.parseColor("#567845"));
-        }
-        */
+
+        if(type.get(position).equals("Achat"))
+            holder.type_txt.setTextColor(Color.parseColor("#ED4545"));
+        else if(type.get(position).equals("Revenue"))
+            holder.type_txt.setTextColor(Color.parseColor("#22C55F"));
 
     }
 
@@ -84,16 +88,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView id_txt, amount_txt, type_txt, description_txt, date_txt;
         LinearLayout myRow;
+        ConstraintLayout rowLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            myRow = itemView.findViewById(R.id.my_row);
+            rowLayout = itemView.findViewById(R.id.my_row_layout);
 
             id_txt = itemView.findViewById(R.id.id_txt);
             amount_txt = itemView.findViewById(R.id.date_txt);
             type_txt = itemView.findViewById(R.id.type_txt);
             description_txt = itemView.findViewById(R.id.description_txt);
             date_txt = itemView.findViewById(R.id.amount_txt);
-            myRow = itemView.findViewById(R.id.my_row);
         }
     }
 }

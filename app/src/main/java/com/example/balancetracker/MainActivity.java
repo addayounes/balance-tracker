@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         customAdapter = new CustomAdapter(MainActivity.this, this, id, amount, type, description, date);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
+        setupStatistics();
+
     }
 
     @Override
@@ -89,5 +92,19 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    void setupStatistics() {
+        Calculate helper = new Calculate(amount, type);
+
+        double balanceVal = helper.calculateBalance();
+        balance.setText(balanceVal + " DA");
+
+        double expenseVal = helper.calculateExpense();
+        expense.setText(expenseVal + " DA");
+
+        double incomeVal = helper.calculateIncome();
+        income.setText(incomeVal + " DA");
+
     }
 }
