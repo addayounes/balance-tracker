@@ -94,4 +94,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         if(result==-1) Toast.makeText(context,"echec de suppression",Toast.LENGTH_SHORT).show();
         else Toast.makeText(context,"supprimé",Toast.LENGTH_SHORT).show();
 
-}}
+
+    }
+    void deleteAllData(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("Supprimer de"+ TABLE_NAME);
+    }
+
+
+}
