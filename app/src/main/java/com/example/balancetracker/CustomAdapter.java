@@ -67,17 +67,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         });
 
 
-        if(type.get(position).equals("Achat"))
-            holder.rowLayout.setBackgroundColor(Color.parseColor("#F4F0F2"));
-        else if(type.get(position).equals("Revenue"))
-            holder.rowLayout.setBackgroundColor(Color.parseColor("#E2F7F4"));
-
-
-        if(type.get(position).equals("Achat"))
+        if(type.get(position).equals("Achat")) {
             holder.type_txt.setTextColor(Color.parseColor("#ED4545"));
-        else if(type.get(position).equals("Revenue"))
+            holder.rowLayout.setBackgroundColor(Color.parseColor("#F4F0F2"));
+        }
+        else if(type.get(position).equals("Revenue")) {
             holder.type_txt.setTextColor(Color.parseColor("#22C55F"));
-
+            holder.rowLayout.setBackgroundColor(Color.parseColor("#E2F7F4"));
+        }
+        
     }
 
     @Override
