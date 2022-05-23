@@ -114,8 +114,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater= getMenuInflater();
-        inflater.inflate(R.menu.my_menu,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.my_menu, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -123,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.delete_all) {
-            Toast.makeText(this, "supprimé", Toast.LENGTH_SHORT).show();
-            MyDatabaseHelper myDB= new MyDatabaseHelper(this);
             myDB.deleteAllData();
             recreate();
+
+            Toast.makeText(this, "Les données sont supprimées avec succées", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);}
